@@ -37,6 +37,12 @@ command! -nargs=* -bar TestSuite   call test#run('suite', split(<q-args>))
 command! -nargs=* -bar TestLast    call test#run_last(split(<q-args>))
 command!          -bar TestVisit   call test#visit()
 
+
+" these "Ctrl mappings" work well when Caps Lock is mapped to Ctrl
+nnoremap <silent> <leader>rtn :TestNearest<CR> " t Ctrl+n
+nnoremap <silent> <leader>rtf :TestFile<CR>    " t Ctrl+f
+nnoremap <silent> <leader>rts :TestSuite<CR>   " t Ctrl+s
+
 for [s:language, s:runners] in items(test#get_runners())
   for s:runner in s:runners
     if index(g:test#runner_commands, s:runner) != -1
